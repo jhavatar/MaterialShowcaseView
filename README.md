@@ -1,3 +1,8 @@
+# New in fork
+- rounded rectangle mask `withRoundedRectangleShape`
+- minSdkVersion 21
+---
+
 *Looking for collaborators to help maintain this library, drop me a line at me@deanwild.co.uk if you want to help.*
 
 # MaterialShowcaseView
