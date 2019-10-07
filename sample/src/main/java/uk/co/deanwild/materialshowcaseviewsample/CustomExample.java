@@ -78,6 +78,8 @@ public class CustomExample extends AppCompatActivity implements View.OnClickList
                 .setContentText("This is some amazing feature you should know about")
                 .setDismissText("GOT IT")
                 .setDismissOnTouch(true)
+                .setContentPadding(0, 0, 0, 0)
+                .setDrawMargin(0, 200, 0, 0)
                 .withRoundedRectangleShape(r, r)
                 .setContentTextColor(getResources().getColor(R.color.green))
                 .setMaskColour(getResources().getColor(R.color.purple))

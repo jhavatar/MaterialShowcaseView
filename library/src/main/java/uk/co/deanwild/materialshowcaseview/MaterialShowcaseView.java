@@ -95,6 +95,8 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
     private ShowcaseTooltip toolTip;
     private boolean toolTipShown;
 
+    private Rect drawMargin = new Rect(0, 0, 0, 0);
+
     public MaterialShowcaseView(Context context, int layoutOverrideRes) {
         super(context);
         init(context, layoutOverrideRes);
@@ -170,8 +172,8 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
         if (!mShouldRender) return;
 
         // get current dimensions
-        final int width = getMeasuredWidth();
-        final int height = getMeasuredHeight();
+        final int width = getMeasuredWidth() - (drawMargin.left + drawMargin.right);
+        final int height = getMeasuredHeight() - (drawMargin.top + drawMargin.bottom);
 
         // don't bother drawing if there is nothing to draw on
         if (width <= 0 || height <= 0) return;
@@ -205,10 +207,10 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
         }
 
         // draw (erase) shape
-        mShape.draw(mCanvas, mEraser, mXPosition, mYPosition);
+        mShape.draw(mCanvas, mEraser, mXPosition - drawMargin.left, mYPosition - drawMargin.top);
 
         // Draw the bitmap on our views  canvas.
-        canvas.drawBitmap(mBitmap, 0, 0, null);
+        canvas.drawBitmap(mBitmap, drawMargin.left, drawMargin.top, null);
     }
 
     @Override
@@ -651,6 +653,15 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
     }
 
 
+    public void setContentPadding(int left, int top, int right, int bottom) {
+        mContentBox.setPadding(left, top, right, bottom);
+    }
+
+    public void setDrawMargin(int left, int top, int right, int bottom) {
+        drawMargin = new Rect(left, top, right, bottom);
+    }
+
+
     /**
      * BUILDER CLASS
      * Gives us a builder utility class with a fluent API for eaily configuring showcase views
@@ -861,6 +872,16 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
 
         public Builder withoutShape() {
             shapeType = NO_SHAPE;
+            return this;
+        }
+
+        public Builder setContentPadding(int left, int top, int right, int bottom) {
+            showcaseView.setContentPadding(left, top, right, bottom);
+            return this;
+        }
+
+        public Builder setDrawMargin(int left, int top, int right, int bottom) {
+            showcaseView.setDrawMargin(left, top, right, bottom);
             return this;
         }
 

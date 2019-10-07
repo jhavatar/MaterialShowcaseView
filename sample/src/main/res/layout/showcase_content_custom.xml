@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="50dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textColor="@android:color/white"
         android:paddingLeft="5dp"
         android:textSize="30dp"
+        android:gravity="center"
         android:layout_marginBottom="15dp"
         tools:visibility="visible"
         tools:text="Title"
@@ -27,6 +28,7 @@
         android:textColor="@android:color/white"
         android:paddingLeft="5dp"
         android:textSize="20dp"
+        android:gravity="center"
         tools:visibility="visible"
         tools:text="content"
         tools:textColor="#000000"/>
@@ -45,6 +47,7 @@
         android:textColor="@android:color/white"
         android:textSize="22dp"
         android:visibility="gone"
+        android:layout_gravity="center"
         tools:visibility="visible"
         tools:text="dismiss"
         tools:textColor="#000000"/>
@@ -63,6 +66,7 @@
         android:textColor="@android:color/white"
         android:textSize="18dp"
         android:visibility="visible"
+        android:layout_gravity="center"
         tools:visibility="visible"
         tools:text="skip"
         tools:textColor="#000000"/>
