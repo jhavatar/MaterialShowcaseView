@@ -5,27 +5,9 @@
 - set custom showcase layout, must obv containt all required views/IDs
 - minSdkVersion 21
 - see "CUSTOM EXAMPLE" in sample for example
----
-
-*Looking for collaborators to help maintain this library, drop me a line at me@deanwild.co.uk if you want to help.*
-
-# MaterialShowcaseView
-A Material Design themed ShowcaseView for Android
-
-
-This library is heavily inspired by the original [ShowcaseView library][1].
-
-Since Google introduced the Material design philosophy I have seen quite a few apps with a nice clean, flat showcase view (the Youtube app is a good example). The only library out there however is the [original one][1]. This was a great library for a long time but the theming is now looking a bit dated.
-
-![Logo](http://i.imgur.com/QIMYRJh.png)
-
-
-![Animation][2]
 
 # Gradle
---------
-
-[![jitpack][4]][5]
+[![](https://jitpack.io/v/jhavatar/MaterialShowcaseView.svg)](https://jitpack.io/#jhavatar/MaterialShowcaseView)
 
 Add the jitpack repo to your your project's build.gradle at the end of repositories [Why?](#why-jitpack)
 
@@ -43,13 +25,26 @@ Then add the dependency to your module's build.gradle:
 
 /app/build.gradle
 ```groovy
-compile 'com.github.deano2390:MaterialShowcaseView:1.3.4'
+compile 'com.github.jhavatar:MaterialShowcaseView:1.4.0'
 ```
+---
+---
+---
 
-NOTE: Some people have mentioned that they needed to add the @aar suffix to get it to resolve from JitPack:
-```groovy
-compile 'com.github.deano2390:MaterialShowcaseView:1.3.4@aar'
-```
+*Looking for collaborators to help maintain this library, drop me a line at me@deanwild.co.uk if you want to help.*
+
+# MaterialShowcaseView
+A Material Design themed ShowcaseView for Android
+
+
+This library is heavily inspired by the original [ShowcaseView library][1].
+
+Since Google introduced the Material design philosophy I have seen quite a few apps with a nice clean, flat showcase view (the Youtube app is a good example). The only library out there however is the [original one][1]. This was a great library for a long time but the theming is now looking a bit dated.
+
+![Logo](http://i.imgur.com/QIMYRJh.png)
+
+
+![Animation][2]
 
 # How to use
 --------
