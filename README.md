@@ -1,6 +1,10 @@
 # New in fork
-- rounded rectangle mask `withRoundedRectangleShape`
+- rounded rectangle mask, `withRoundedRectangleShape`
+- set content padding, `setContentPadding`
+- set draw margin, `setDrawMargin`
+- set custom showcase layout, must obv containt all required views/IDs
 - minSdkVersion 21
+- see "CUSTOM EXAMPLE" in sample for example
 ---
 
 *Looking for collaborators to help maintain this library, drop me a line at me@deanwild.co.uk if you want to help.*
