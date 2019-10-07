@@ -47,6 +47,7 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
     public static final int DEFAULT_TOOLTIP_MARGIN = 10;
     long DEFAULT_DELAY = 0;
     long DEFAULT_FADE_TIME = 300;
+    public static final int LAYOUT_OVERRIDE_RES_IGNORE = -1;
 
     private int mOldHeight;
     private int mOldWidth;
@@ -94,9 +95,9 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
     private ShowcaseTooltip toolTip;
     private boolean toolTipShown;
 
-    public MaterialShowcaseView(Context context) {
+    public MaterialShowcaseView(Context context, int layoutOverrideRes) {
         super(context);
-        init(context);
+        init(context, layoutOverrideRes);
     }
 
     public MaterialShowcaseView(Context context, AttributeSet attrs) {
@@ -117,6 +118,10 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
 
 
     private void init(Context context) {
+        init(context, LAYOUT_OVERRIDE_RES_IGNORE);
+    }
+
+    private void init(Context context, int layoutOverrideRes) {
         setWillNotDraw(false);
 
         mListeners = new ArrayList<>();
@@ -132,7 +137,13 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
         setVisibility(INVISIBLE);
 
 
-        View contentView = LayoutInflater.from(getContext()).inflate(R.layout.showcase_content, this, true);
+        int layout;
+        if (layoutOverrideRes != LAYOUT_OVERRIDE_RES_IGNORE) {
+            layout = layoutOverrideRes;
+        } else {
+            layout = R.layout.showcase_content;
+        }
+        View contentView = LayoutInflater.from(getContext()).inflate(layout, this, true);
         mContentBox = contentView.findViewById(R.id.content_box);
         mTitleTextView = contentView.findViewById(R.id.tv_title);
         mContentTextView = contentView.findViewById(R.id.tv_content);
@@ -661,9 +672,13 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
         private final Activity activity;
 
         public Builder(Activity activity) {
+            this(activity, LAYOUT_OVERRIDE_RES_IGNORE);
+        }
+
+        public Builder(Activity activity, int layoutOverrideRes) {
             this.activity = activity;
 
-            showcaseView = new MaterialShowcaseView(activity);
+            showcaseView = new MaterialShowcaseView(activity, layoutOverrideRes);
         }
 
         /**
