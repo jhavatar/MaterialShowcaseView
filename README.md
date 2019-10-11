@@ -1,4 +1,8 @@
 # New in fork
+1.4.1
+- fix display for devices without soft navbar
+
+1.4.0
 - rounded rectangle mask, `withRoundedRectangleShape`
 - set content padding, `setContentPadding`
 - set draw margin, `setDrawMargin`

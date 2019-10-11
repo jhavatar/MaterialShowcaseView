@@ -3,6 +3,7 @@ package uk.co.deanwild.materialshowcaseview;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -1148,11 +1149,19 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
     }
 
 
+    public boolean hasSoftNavBar() {
+        Resources resources = getResources();
+        int id = resources.getIdentifier("config_showNavigationBar", "bool", "android");
+        return (id > 0) && resources.getBoolean(id);
+    }
+
     public int getSoftButtonsBarSizePort() {
 
-        int resourceId = getResources().getIdentifier("navigation_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            return getResources().getDimensionPixelSize(resourceId);
+        if (hasSoftNavBar()) {
+            int resourceId = getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                return getResources().getDimensionPixelSize(resourceId);
+            }
         }
 
         return 0;
