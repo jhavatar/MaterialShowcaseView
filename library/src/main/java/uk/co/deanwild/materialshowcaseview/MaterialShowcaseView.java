@@ -96,6 +96,8 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
     private ShowcaseTooltip toolTip;
     private boolean toolTipShown;
 
+    private boolean mCoverNavBar = false;
+
     private Rect drawMargin = new Rect(0, 0, 0, 0);
 
     public MaterialShowcaseView(Context context, int layoutOverrideRes) {
@@ -571,6 +573,10 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
         this.mAnimationFactory = animationFactory;
     }
 
+    public void setCoverNavBar(boolean cover) {
+        this.mCoverNavBar = cover;
+    }
+
     /**
      * Set properties based on a config object
      *
@@ -930,6 +936,11 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
             return this;
         }
 
+        public Builder setCoverNavBar(boolean cover) {
+            showcaseView.setCoverNavBar(cover);
+            return this;
+        }
+
         public MaterialShowcaseView build() {
             if (showcaseView.mShape == null) {
                 switch (shapeType) {
@@ -1004,8 +1015,6 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
             mPrefsManager.close();
 
         mPrefsManager = null;
-
-
     }
 
 
@@ -1157,7 +1166,7 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
 
     public int getSoftButtonsBarSizePort() {
 
-        if (hasSoftNavBar()) {
+        if (!mCoverNavBar && hasSoftNavBar()) {
             int resourceId = getResources().getIdentifier("navigation_bar_height", "dimen", "android");
             if (resourceId > 0) {
                 return getResources().getDimensionPixelSize(resourceId);
