@@ -1,4 +1,7 @@
 # New in fork
+1.4.2
+- optionally draw showcase over device's navbar, `setCoverNavBar`. default is false.
+
 1.4.1
 - fix display for devices without soft navbar
 
